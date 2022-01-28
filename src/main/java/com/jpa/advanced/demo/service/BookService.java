@@ -68,9 +68,9 @@ public class BookService {
         if (book.getTitle() != null) {
             retrievedBook.setTitle(book.getTitle());
         }
-        if (book.getPrice() != null) {
-            retrievedBook.setPrice(book.getPrice());
-        }
+//        if (book.getPrice() != null) {
+//            retrievedBook.setPrice(book.getPrice());
+//        }
         if (book.getAuthor() != null) {
             retrievedBook.setAuthor(book.getAuthor());
         }
