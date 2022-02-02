@@ -2,12 +2,19 @@ package com.jpa.advanced.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "genre")
 public class Genre {
     @Id
@@ -31,4 +38,76 @@ public class Genre {
 
     @Version
     private Long version;
+
+    // Constructors
+    public Genre(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    // Getters and Setters
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
+//
+//    public List<Book> getBooks() {
+//        return books;
+//    }
+//
+//    public void setBooks(List<Book> bookList) {
+//        for(Book book : bookList) {
+//            this.addBook(book);
+//        }
+//    }
+
+    public void addBook(Book book) {
+        book.getGenres().add(this);
+        books.add(book);
+    }
+
+    public void removeBook(Book book) {
+        book.getGenres().remove(this);
+        this.getBooks().remove(book);
+    }
+
+    public void removeAllBooks() {
+        for (Book book : this.getBooks()) {
+            this.removeBook(book);
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(!(obj instanceof Genre)){
+            return false;
+        } else {
+            Genre that = (Genre)obj;
+            return Objects.equals(this.name, that.name) && Objects.equals(this.description, that.description);
+        }
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(name, description);
+    }
 }

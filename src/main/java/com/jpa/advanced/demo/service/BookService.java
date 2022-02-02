@@ -6,7 +6,6 @@ import com.jpa.advanced.demo.entity.Book;
 import com.jpa.advanced.demo.entity.Book_;
 import com.jpa.advanced.demo.entity.Genre_;
 import com.jpa.advanced.demo.entity.Shelf_;
-import com.jpa.advanced.demo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -31,7 +30,7 @@ public class BookService {
             public Predicate toPredicate(Root<Book> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 Predicate q = cb.like(root.get(Book_.author), "H%");
                 q = cb.and(q, cb.like(root.join(Book_.genres).get(Genre_.description), "%IT%"));
-                q = cb.and(q, cb.equal(root.join(Book_.shelf).get(Shelf_.room), "The Big Room"));
+//                q = cb.and(q, cb.equal(root.join(Book_.shelf).get(Shelf_.room), "The Big Room"));
                 return q;
             }
         });
