@@ -14,6 +14,9 @@ import java.util.Objects;
 
 @Entity
 @Data
+@NamedEntityGraph(name = "book-graph",
+        attributeNodes = @NamedAttributeNode("shelf")
+)
 @Table(name = "book")
 @AllArgsConstructor
 public class Book {
@@ -29,7 +32,7 @@ public class Book {
     @Version
     private Long version;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JsonBackReference
     private Shelf shelf;
 

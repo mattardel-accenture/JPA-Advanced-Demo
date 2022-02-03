@@ -24,7 +24,8 @@ public class Shelf {
     private Long id;
     @OneToMany(
             mappedBy = "shelf",
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
     )
     @JsonManagedReference
     private List<Book> books = new ArrayList<>();

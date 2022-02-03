@@ -1,5 +1,6 @@
 package com.jpa.advanced.demo.controller;
 
+import com.jpa.advanced.demo.entity.Book;
 import com.jpa.advanced.demo.entity.Shelf;
 import com.jpa.advanced.demo.service.ShelfService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,4 +60,17 @@ public class ShelfController {
 
         return new ResponseEntity<Shelf>(updatedShelf, HttpStatus.OK);
     }
+
+    @GetMapping("/shelves/byroom/{room}")
+    public List<Shelf> getShelvesByRoom(@PathVariable("room") String room)
+    {
+        return shelfService.getShelvesByRoom(room);
+    }
+    @GetMapping("/shelves/bylocation/{location}")
+    public List<Shelf> getShelvesByLocation(@PathVariable("location") String location)
+    {
+        return shelfService.getShelvesByLocation(location);
+    }
+
+
 }

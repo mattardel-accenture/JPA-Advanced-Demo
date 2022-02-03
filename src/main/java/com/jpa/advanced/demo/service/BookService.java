@@ -23,6 +23,10 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    public List<Book> getBookByTitle(String title){
+        return bookRepository.findByTitle(title);
+    }
+
     public List<Book> getBooksByWeirdCriteria() {
         return bookRepository.findAll(new Specification<Book>() {
 

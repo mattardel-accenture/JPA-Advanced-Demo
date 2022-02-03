@@ -21,7 +21,12 @@ public class ShelfService {
     public Optional<Shelf> getShelfById(Long id){
         return(shelfRepository.findById(id));
     }
-
+    public List<Shelf> getShelvesByRoom(String room) {
+        return shelfRepository.findByRoom(room);
+    }
+    public List<Shelf> getShelvesByLocation(String location){
+        return shelfRepository.findByLocation(location);
+    }
     public void saveShelf(Shelf shelf) {
         if (!shelf.getBooks().isEmpty()) {
             for (Book book : shelf.getBooks()) {

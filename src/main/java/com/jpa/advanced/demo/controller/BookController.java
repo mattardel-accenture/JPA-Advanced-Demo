@@ -1,6 +1,7 @@
 package com.jpa.advanced.demo.controller;
 
 import com.jpa.advanced.demo.entity.Book;
+import com.jpa.advanced.demo.entity.Shelf;
 import com.jpa.advanced.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,4 +55,12 @@ public class BookController {
     public List<Book> getBooksByWeirdCriteria() {
         return bookService.getBooksByWeirdCriteria();
     }
+
+    @GetMapping("/books/bytitle/{title}")
+    public List<Book> getBooksByTitle(@PathVariable("title") String title)
+    {
+        return bookService.getBookByTitle(title);
+    }
+
+
 }
