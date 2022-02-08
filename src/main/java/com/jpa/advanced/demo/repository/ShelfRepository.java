@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ShelfRepository extends JpaRepository<Shelf, Long> {
-    @EntityGraph("shelf-book-graph")
+    //@EntityGraph("shelf-book-graph")
     List<Shelf> findByRoom(String room);
 
     List<Shelf> findByLocation(String location);

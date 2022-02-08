@@ -5,6 +5,8 @@ import com.jpa.advanced.demo.entity.Shelf;
 import com.jpa.advanced.demo.repository.ShelfRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import javax.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +23,7 @@ public class ShelfService {
     public Optional<Shelf> getShelfById(Long id){
         return(shelfRepository.findById(id));
     }
+    //@Transactional
     public List<Shelf> getShelvesByRoom(String room) {
         return shelfRepository.findByRoom(room);
     }

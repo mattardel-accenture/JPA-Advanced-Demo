@@ -6,6 +6,7 @@ import com.jpa.advanced.demo.service.ShelfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -62,6 +63,7 @@ public class ShelfController {
     }
 
     @GetMapping("/shelves/byroom/{room}")
+    @Transactional
     public List<Shelf> getShelvesByRoom(@PathVariable("room") String room)
     {
         return shelfService.getShelvesByRoom(room);
