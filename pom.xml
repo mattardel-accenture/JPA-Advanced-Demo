@@ -64,6 +64,16 @@
 			<version>5.8.1</version>
 		</dependency>
 		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
 			<version>RELEASE</version>
@@ -101,6 +111,7 @@
 					</compilerArguments>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 

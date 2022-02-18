@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,6 +28,9 @@ public class Shelf {
             mappedBy = "shelf",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
+            //THIS IS WHAT MAKES BOOKS PRINT OR NOT
+            //ALL&PERSIST make books print, rest don't print books, seems all still
+            //have books in SQL query tho
     )
     @JsonManagedReference
     private List<Book> books = new ArrayList<>();

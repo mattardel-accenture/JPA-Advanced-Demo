@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,9 +16,6 @@ import java.util.Objects;
 
 @Entity
 @Data
-@NamedEntityGraph(name = "book-graph",
-        attributeNodes = @NamedAttributeNode("shelf")
-)
 @Table(name = "book")
 @AllArgsConstructor
 public class Book {
@@ -32,13 +31,12 @@ public class Book {
     @Version
     private Long version;
 
-    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     private Shelf shelf;
 
     @ManyToMany(mappedBy = "books", cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.DETACH
     })
     @JsonIdentityInfo(
             generator = ObjectIdGenerators.PropertyGenerator.class,
