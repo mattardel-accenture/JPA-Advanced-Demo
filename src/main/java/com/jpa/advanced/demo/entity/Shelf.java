@@ -27,10 +27,7 @@ public class Shelf {
     @OneToMany(
             mappedBy = "shelf",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-            //THIS IS WHAT MAKES BOOKS PRINT OR NOT
-            //ALL&PERSIST make books print, rest don't print books, seems all still
-            //have books in SQL query tho
+            orphanRemoval = true
     )
     @JsonManagedReference
     private List<Book> books = new ArrayList<>();
@@ -84,6 +81,18 @@ public class Shelf {
 //    public void setVersion(Long version) {
 //        this.version = version;
 //    }
+
+    public void addBook(Book book){
+        books.add(book);
+        book.setShelf(this);
+    }
+
+    public void removeBook(Book book){
+        books.remove(book);
+        book.setShelf(null);
+    }
+
+
 
     @Override
     public boolean equals(Object obj){
