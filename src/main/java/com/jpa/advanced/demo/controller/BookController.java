@@ -63,9 +63,4 @@ public class BookController {
         return new ResponseEntity<Book>(book, status);
     }
 
-    @GetMapping("/books/weirdcriteria")
-    public List<Book> getBooksByWeirdCriteria() {
-        return bookService.getBooksByWeirdCriteria();
-    }
-
 }

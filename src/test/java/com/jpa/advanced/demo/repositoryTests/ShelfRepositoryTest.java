@@ -34,19 +34,6 @@ public class ShelfRepositoryTest {
 
         Shelf shelf = new Shelf("Library", "First floor", books);
         shelfRepo.save(shelf);
-
-        //List<Shelf> test = shelfRepo.findByRoom("Library");
-//        assertEquals(shelf2.getId(), 1L);
-
-
-
-
-
-
-
-
     }
-
-
 
 }

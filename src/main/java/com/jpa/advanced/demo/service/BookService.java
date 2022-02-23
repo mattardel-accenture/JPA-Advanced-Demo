@@ -26,18 +26,6 @@ public class BookService {
     @Autowired
     private ShelfService shelfService;
 
-    public List<Book> getBooksByWeirdCriteria() {
-        return bookRepository.findAll(new Specification<Book>() {
-
-            @Override
-            public Predicate toPredicate(Root<Book> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                Predicate q = cb.like(root.get(Book_.author), "H%");
-                q = cb.and(q, cb.equal(root.join(Book_.shelf).get(Shelf_.room), "The Big Room"));
-                return q;
-            }
-        });
-    }
-
     public List<Book> getBooks() {
         return bookRepository.findAll();
     }

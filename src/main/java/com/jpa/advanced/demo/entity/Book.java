@@ -43,42 +43,6 @@ public class Book {
         this.price = price;
     }
 
-    @PrePersist
-    public void logNewBookPrePersist() {
-        log.info("Attempting to add new book entitled: " + title);
-    }
-
-    @PostPersist
-    public void logNewBookAdded() {
-        log.info("Added book '" + title + "' by author: " + author + " and ID: " + id);
-    }
-
-    @PreRemove
-    public void logBookRemovalAttempt() {
-        log.info("Attempting to delete book: " + title + " by author: " + author + " and ID: " + id);
-    }
-
-    @PostRemove
-    public void logBookRemoval() {
-        isDeleted = true;
-        log.info("Deleted book: " + title + " by author: " + author + " and ID: " + id);
-    }
-
-    @PreUpdate
-    public void logBookUpdateAttempt() {
-        log.info("Attempting to update book: " + title + " by author: " + author + " and ID: " + id);
-    }
-
-    @PostUpdate
-    public void logBookUpdate() {
-        log.info("Updated book: " + title + " by author: " + author + " and ID: " + id);
-    }
-
-    @PostLoad
-    public void logBookLoad() {
-        log.info("Loaded book: " + title + " by author: " + author + " and ID: " + id);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
