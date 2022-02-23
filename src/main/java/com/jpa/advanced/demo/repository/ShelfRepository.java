@@ -12,5 +12,5 @@ public interface ShelfRepository extends JpaRepository<Shelf, Long> {
     //@EntityGraph("shelf-book-graph")
     List<Shelf> findByRoom(String room);
 
-    List<Shelf> findByLocation(String location);
+    List<Shelf> findAll();
 }
