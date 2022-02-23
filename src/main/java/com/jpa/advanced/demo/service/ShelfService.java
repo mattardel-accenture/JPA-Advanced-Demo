@@ -23,7 +23,6 @@ public class ShelfService {
     public Optional<Shelf> getShelfById(Long id){
         return(shelfRepository.findById(id));
     }
-    //@Transactional
     public List<Shelf> getShelvesByRoom(String room) {
         return shelfRepository.findByRoom(room);
     }

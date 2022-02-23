@@ -66,7 +66,9 @@ public class ShelfController {
     @Transactional
     public List<Shelf> getShelvesByRoom(@PathVariable("room") String room)
     {
-        return shelfService.getShelvesByRoom(room);
+        String splitRoomByUnderscore = String.join(" ", room.split("_"));
+        System.out.println(splitRoomByUnderscore);
+        return shelfService.getShelvesByRoom(splitRoomByUnderscore);
     }
     @GetMapping("/shelves/bylocation/{location}")
     public List<Shelf> getShelvesByLocation(@PathVariable("location") String location)
